@@ -1,0 +1,103 @@
+.invoiceTitle {
+  margin: 0;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.invoice {
+  justify-self: center;
+  border: 1px solid gray;
+  width: 19cm;
+  height: 27.6cm;
+  padding: 1cm;
+  display: grid;
+  grid-template-rows: auto auto 1fr auto auto;
+  grid-template-areas:
+  'title'
+  'header'
+  'main'
+  'section'
+  'footer'
+  ;
+  gap: 10px;
+}
+
+.invoice h2 {
+  grid-area: title;
+}
+
+.invoice h4,p {
+  margin: 5px;
+}
+
+.invoice header {
+  grid-area: header;
+  display: flex;
+  justify-content: space-between;
+}
+
+.invoice header div:last-child {
+  text-align: right;
+}
+
+.invoice img {
+  border: 1px solid gray;
+  border-radius: 50%;
+  width: 50px;
+}
+
+th {
+  width: 10%;
+}
+
+.productsTable, td, th, tr {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid gray;
+}
+
+td,th {
+  text-align: left;
+  padding: 5px;
+}
+
+.productsTable tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.productsTable tr {
+  position: relative;
+}
+
+.productsTable tbody tr:hover {
+  background-color: blanchedalmond;
+}
+
+main {
+  grid-area: main;
+}
+
+section {
+  grid-area: section;
+  display: flex;
+  justify-content: space-between;
+}
+
+section div:last-child {
+  text-align: right;
+}
+
+section div:last-child p {
+  border: 1px solid gray;
+  margin: 0;
+  padding: 5px;
+}
+
+section div:last-child p:last-child {
+  background-color: aquamarine;
+}
+
+footer {
+  grid-area: footer;
+  background-color: antiquewhite;
+}

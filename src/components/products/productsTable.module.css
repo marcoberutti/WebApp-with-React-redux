@@ -1,0 +1,41 @@
+.tableContainer {
+  justify-self: center;
+  margin: 0 20px;
+}
+
+th {
+  width: 10%;
+}
+
+.productsTable, td, th, tr {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid gray;
+}
+
+td,th {
+  text-align: left;
+  padding: 5px;
+}
+
+.productsTable tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.productsTable tr {
+  position: relative;
+}
+
+.productsTable tbody tr:hover {
+  background-color: blanchedalmond;
+}
+
+.productsTable img {
+  width: 50px;
+}
+
+.productsTable .tdActions {
+  border: none;
+  display: flex;
+  gap: 2px;
+}

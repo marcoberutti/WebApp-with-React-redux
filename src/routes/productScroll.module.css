@@ -1,0 +1,38 @@
+.scrollContainer {
+  display: flex;                /* Allinea gli elementi in orizzontale */
+  overflow-x: auto;             /* Abilita lo scroll orizzontale */
+  padding: 30px;              /* Aggiungi un po' di spazio ai lati */
+  scrollbar-width: thin;        /* Riduci la larghezza della scrollbar (per alcuni browser) */
+  -ms-overflow-style: none;     /* Rimuove la scrollbar in IE */
+}
+
+.scrollContainer::-webkit-scrollbar {
+  display: none;                /* Rimuove la scrollbar in Webkit (Chrome, Safari) */
+}
+
+.scrollCard {
+  flex: 0 0 auto;               /* Mantiene la larghezza fissa per ogni card */
+  width: 200px;                 /* Imposta una larghezza fissa per ogni card */
+  margin-right: 20px;           /* Spazio tra le card */
+  background-color: #f0f0f0;    /* Colore di sfondo per ogni card */
+  padding: 10px;                /* Padding interno */
+  border-radius: 8px;           /* Angoli arrotondati */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Aggiungi un'ombra leggera */
+}
+
+.scrollCard img {
+  width: 100%;                  /* Rende l'immagine larga come la card */
+  height: auto;                 /* Mantiene le proporzioni */
+  border-radius: 4px;           /* Arrotonda gli angoli dell'immagine */
+  object-fit: cover;            /* Riempi l'area senza deformare l'immagine */
+}
+
+.mainContainer {
+  margin: 5px;
+}
+
+.headerBtnContainer {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 15px 0;
+}

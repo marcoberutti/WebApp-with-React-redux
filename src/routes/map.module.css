@@ -1,0 +1,7 @@
+.mainContainer {
+  display: flex;
+}
+
+.asideBar {
+  padding: 10px;
+}

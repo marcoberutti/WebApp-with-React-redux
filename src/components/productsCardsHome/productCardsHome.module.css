@@ -1,0 +1,90 @@
+.productCardsHome {
+  margin: 0 15px;
+  min-width: 150px;
+  width: 250px;
+  max-width: 300px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  overflow: hidden;
+  display: grid;
+  grid-template-rows: 100px 1fr auto;
+  grid-template-areas:
+  'img'
+  'section'
+  'footer'
+  ;
+}
+
+.productCardsHome img {
+  grid-area: img;
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+}
+
+.section {
+  grid-area: section;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.footer {
+  grid-area: footer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.productCardsHome div div {
+  display: flex;
+  align-items: center;
+  height: fit-content;
+  background-color: rgb(65, 78, 116);
+  border-radius: 5px;
+}
+
+.productCardsHome div div span {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 15px;
+  font-size: 0.8rem;
+  padding: 0 6px;
+  color: white;
+}
+
+.productCardsHome .cartContainer {
+  position: relative;
+}
+
+.myCart {
+  font-size: 1.1rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  animation: jump 500ms linear;
+}
+
+@keyframes jump {
+  0% {
+    top: 0;
+    color: white;
+  } 
+  25% {
+    color: blue;
+  }
+  50% {
+  color: green;
+  }
+  75% {
+  color: yellow;
+  }
+  100% {
+    top: -50px;
+  color: red;
+  }
+}

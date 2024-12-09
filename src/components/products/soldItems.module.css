@@ -1,0 +1,58 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 20px;
+}
+
+.headerContainer div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tableContainer {
+  justify-self: center;
+  margin: 0 20px;
+}
+
+th {
+  width: 10%;
+}
+
+.SoldItemsDBTable, td, th, tr {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: 1px solid gray;
+}
+
+td,th {
+  text-align: left;
+  padding: 5px;
+}
+
+.SoldItemsDBTable tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+.SoldItemsDBTable tr {
+  position: relative;
+}
+
+.SoldItemsDBTable tbody tr:hover {
+  background-color: blanchedalmond;
+}
+
+.SoldItemsDBTable img {
+  width: 50px;
+}
+
+.SoldItemsDBTable .tdActions {
+  border: none;
+  display: flex;
+  gap: 2px;
+}
+
+.SoldItemsDBTable img {
+  width: 50px;
+}

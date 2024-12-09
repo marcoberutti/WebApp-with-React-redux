@@ -1,0 +1,47 @@
+.navLink {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+.mainContainer {
+  margin: 0 10px 175px 10px;
+  margin-bottom: 175px;
+}
+
+.headerPage {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px 0 20px;
+}
+
+.cartContainer {
+  height: 100%;
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas: 
+  'cart scrollbar'
+  ;
+}
+
+.cartProductsContainer {
+
+}
+
+.scrollContainer {
+  grid-area: scrollbar;
+  display: flex;                /* Allinea gli elementi in orizzontale */
+  flex-direction: column;
+  max-height: 500px;
+  overflow-y: auto;             /* Abilita lo scroll orizzontale */
+  padding: 15px;              /* Aggiungi un po' di spazio ai lati */
+  scrollbar-width: thin;        /* Riduci la larghezza della scrollbar (per alcuni browser) */
+  -ms-overflow-style: none;     /* Rimuove la scrollbar in IE */
+}
+
+.otherProducts {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
