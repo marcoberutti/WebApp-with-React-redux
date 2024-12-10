@@ -42,6 +42,9 @@ export const productsSlice = createSlice({
       const updatedState = state.map((product) => ({ ...product, quantity: 1 }));
       localStorage.setItem("products2", JSON.stringify(updatedState)); // Aggiorna il localStorage
       return updatedState; // Aggiorna lo stato
+    },
+    syncWithLocalStorage: ()=> {
+      return JSON.parse(localStorage.getItem('products2')) || []
     }
   }
 })
@@ -52,6 +55,7 @@ export const {
   editProduct,
   decrement,
   increment,
-  resetQuantities
+  resetQuantities,
+  syncWithLocalStorage,
 } = productsSlice.actions
 export default productsSlice.reducer

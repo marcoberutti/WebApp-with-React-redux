@@ -3,10 +3,15 @@ import { useDispatch } from "react-redux"
 import style from './cartProduct.module.css'
 import Button from "../Button"
 import { removeFromCart, increment, decrement } from "features/cartSlice"
+import { useEffect } from "react"
 
 export default function CartProducts(){
   const dispatch = useDispatch()
   const cartProducts = useSelector((state)=> state.cart.cart)
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartProducts));
+  }, [cartProducts]);
 
   const handleDecrement = (id) => {
     dispatch(decrement(id))
@@ -14,7 +19,6 @@ export default function CartProducts(){
   const handleIncrement = (id) => {
     dispatch(increment(id))
   }
-
   function handleRemoveFromCart(id){
     dispatch(removeFromCart(id))
   }

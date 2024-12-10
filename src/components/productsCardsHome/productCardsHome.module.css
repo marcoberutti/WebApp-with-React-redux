@@ -1,4 +1,5 @@
 .productCardsHome {
+  position: relative;
   margin: 0 15px;
   min-width: 150px;
   width: 250px;
@@ -13,6 +14,21 @@
   'section'
   'footer'
   ;
+}
+
+.productCardsHome p:first-child {
+  position: absolute;
+  left: 50%;
+  text-align: center;
+  color: red;
+  font-weight: 600;
+  animation: pulse infinite 5s linear;
+  background-color: white;
+  transform: rotate(25deg);
+  padding: 15px;
+  border-radius: 50%;
+  top: 5px;
+  right: 0;
 }
 
 .productCardsHome img {
@@ -87,4 +103,16 @@
     top: -50px;
   color: red;
   }
+}
+
+@keyframes pulse {
+0% {
+  opacity: 1;
+} 
+50% {
+  opacity: 0;
+}
+100% {
+  opacity: 1;
+}
 }

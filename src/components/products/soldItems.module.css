@@ -1,3 +1,7 @@
+.mainContainer {
+  margin-bottom: 25px;
+}
+
 .headerContainer {
   display: flex;
   justify-content: space-between;
@@ -43,16 +47,8 @@ td,th {
   background-color: blanchedalmond;
 }
 
-.SoldItemsDBTable img {
-  width: 50px;
-}
-
 .SoldItemsDBTable .tdActions {
   border: none;
   display: flex;
   gap: 2px;
-}
-
-.SoldItemsDBTable img {
-  width: 50px;
 }

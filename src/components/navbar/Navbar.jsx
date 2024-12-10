@@ -9,8 +9,23 @@ export default function Navbar(){
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userToken = localStorage.getItem('userToken')
-  const [isUserToken, setIsUserToken] = useState(false) 
 
+  const [isUserToken, setIsUserToken] = useState(false) 
+  const [isVisibleMenu, setIsVisibleMenu] = useState('')
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 576);
+
+  useEffect(()=>{
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 576); 
+    };
+    window.addEventListener('resize', handleResize); 
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  },[])
+  useEffect(() => {
+    setIsVisibleMenu('')
+  }, [isMobile]);
   useEffect(()=>{
     if(userToken){
       setIsUserToken(true)
@@ -18,7 +33,6 @@ export default function Navbar(){
       setIsUserToken(false)
     }
   },[userToken])
-
   useEffect(()=>{
     if(message){
       setTimeout(()=>{
@@ -26,32 +40,47 @@ export default function Navbar(){
       },3000)
     }
   },[message, dispatch])
-
   function handleLogout(){
     dispatch(logout())
     navigate('/home')
   }
 
   return (
-    <nav>
-      <ul>
-        <NavLink className={style.navLink} to='/home'>Home</NavLink>
-        <NavLink className={style.navLink} to='/about'>About</NavLink>
-        <NavLink className={style.navLink} to='/cart'>Cart</NavLink>
-        {
-          isUserToken ?
-          <>
-            <NavLink className={style.navLink} to='/products'>Products</NavLink>
-            <NavLink 
-              onClick={()=>handleLogout()}
-              className={style.navLink} 
-              to='/home'>
-            Logout
-            </NavLink>
-          </>
-          :
-          <NavLink className={style.navLink} to='/login'>Login</NavLink>
-        }
+    <nav className={`
+      ${isVisibleMenu === '' && ''} 
+      ${isVisibleMenu === true && style.navBarLong} 
+      ${isVisibleMenu === false && style.navBarShort}`}>
+      <ul className={isVisibleMenu ? style.ulFlex : style.ulNormal}>
+      { isMobile &&
+        <NavLink 
+          className={`${style.hamburgerMenu} ${isVisibleMenu && style.hamburgerAnimated}`}
+          onClick={()=> setIsVisibleMenu(!isVisibleMenu)}>
+          <div>
+            <span className={isVisibleMenu && style.spanTransformedA}>|</span>
+            <span className={isVisibleMenu && style.spanTransformedB}>|</span>
+            <span className={isVisibleMenu && style.spanTransformedC}>|</span>
+          </div>
+        </NavLink>
+      }
+        <div className={`${style.menuContainer} ${isVisibleMenu ? style.visible : ''}`}>
+          <NavLink className={style.navLink} to='/home'>Home</NavLink>
+          <NavLink className={style.navLink} to='/about'>About</NavLink>
+          <NavLink className={style.navLink} to='/cart'>Cart</NavLink>
+          {
+            isUserToken ?
+            <>
+              <NavLink className={style.navLink} to='/products'>Products</NavLink>
+              <NavLink 
+                onClick={()=>handleLogout()}
+                className={style.navLink} 
+                to='/home'>
+              Logout
+              </NavLink>
+            </>
+            :
+            <NavLink className={style.navLink} to='/login'>Login</NavLink>
+          }
+        </div>
       </ul>
       {message && 
       <div className={style.messageDiv}>{message}</div>

@@ -6,6 +6,7 @@ import { resetQuantities } from "features/productsSlice";
 import { addToCart } from "features/cartSlice";
 import { increment, decrement } from "features/productsSlice";
 import 'bootstrap-icons/font/bootstrap-icons.css';
+import { syncWithLocalStorage } from "features/productsSlice";
 
 export default function ProductCardsHome(){
   const dispatch = useDispatch();
@@ -20,8 +21,12 @@ export default function ProductCardsHome(){
     dispatch(increment(id))
   }
 
+  useEffect(() => {
+    dispatch(syncWithLocalStorage())
+  }, [dispatch]);
+
   useEffect(()=>{
-    if(cart.length >0){
+    if(cart.length > 0){
       localStorage.setItem('cart', JSON.stringify(cart))
     }
   },[cart])
@@ -44,6 +49,7 @@ export default function ProductCardsHome(){
       {products.length !== 0 ?
         products.map((product) => 
         <div className={style.productCardsHome} key={product.id}>
+          <p>{product.stockQuantity} left!!</p>
           {product.image ?
           <img src={product.image} alt=""/>
           :

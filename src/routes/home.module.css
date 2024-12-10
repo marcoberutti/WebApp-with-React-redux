@@ -30,7 +30,7 @@
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  padding: 15px 30px;
+  padding: 15px 20px;
 }
 
 .productsContainer {
@@ -47,8 +47,15 @@
   background-color: rgb(43, 43, 82);
   padding: 5px 10px;
   border-radius: 8px;
+  text-align: center;
 }
 
 .mainTitle {
   margin-top: 0;
+}
+
+@media (max-width: 576px){
+  .cartLinkContainer {
+    flex-direction: column;
+  }
 }

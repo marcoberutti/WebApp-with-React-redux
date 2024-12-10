@@ -1,13 +1,27 @@
 import ProductCardsCart from "components/cart/ProductCardsCart"
 import CartProducts from "components/cart/CartProducts"
-
+import { useSelector } from "react-redux"
 import Button from "components/Button"
 import style from './cart.module.css'
 import { NavLink } from "react-router"
 import ScrollContainer from "react-indiana-drag-scroll"
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
+import { SyncCartWithLocalStorage } from "features/cartSlice"
 
 export default function Cart(){
-  const cartProducts = JSON.parse(localStorage.getItem('cart')) || []
+  const dispatch = useDispatch();
+  const cartProducts = useSelector((state)=> state.cart.cart)
+
+  useEffect(() => {
+    dispatch(SyncCartWithLocalStorage());
+  }, [dispatch]);
+
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cartProducts));
+  }, [cartProducts]);
+  
+  
 
   return(
     <div className={style.mainContainer}>

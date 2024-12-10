@@ -8,15 +8,13 @@ export const cartSlice = createSlice({
   initialState: {cart, purchasedItems},
   reducers: {
     addToCart: (state, action) => {
-      const existingProduct = state.cart.find((item)=> item.id === action.payload.id)
-      if(existingProduct){
-        existingProduct.quantity += action.payload.quantity
+      const product = action.payload;
+      const existingProduct = state.cart.find((item) => item.id === product.id);
+      if (existingProduct) {
+        existingProduct.quantity += product.quantity; // Aggiungi quantità
       } else {
-        state.cart.push(action.payload)
+        state.cart.push(product); // Nuovo prodotto
       }
-      const oldItems = JSON.parse(localStorage.getItem('cart')) || []
-      const newItems = [...oldItems, action.payload]
-      localStorage.setItem('cart', JSON.stringify(newItems))
     },
     removeFromCart: (state, action) => {
       state.cart = state.cart.filter(product => product.id !== action.payload)
@@ -37,20 +35,26 @@ export const cartSlice = createSlice({
       }
     },
     pay: (state, action) => {
-      console.log(action.payload)
       const oldItems = JSON.parse(localStorage.getItem('purchasedItems')) || []
       const allItems = [...oldItems, ...action.payload]
-      localStorage.setItem('purchasedItems', JSON.stringify(allItems))
-      state.cart.filter(product => false)
+      const allItemsMinusImages = allItems.map(product => {
+        const { image, ...productWithoutImage } = product
+        return productWithoutImage
+      })
+      localStorage.setItem('purchasedItems', JSON.stringify(allItemsMinusImages))
       localStorage.setItem('cart', JSON.stringify([]))
-      return {
-        ...state,
-        purchasedItems: allItems,
-        
-      };
-    }
+
+      let localStorageCartClearing = JSON.parse(localStorage.getItem('cart'))
+
+      state.cart = localStorageCartClearing
+      state.purchasedItems = allItems;
+    },
+    SyncCartWithLocalStorage: (state) => {
+      const localStorageCart = JSON.parse(localStorage.getItem('cart')) || [];
+      state.cart = localStorageCart;
+    },
   }
 })
 
-export const {addToCart, removeFromCart, increment, decrement, pay} = cartSlice.actions
+export const {addToCart, removeFromCart, increment, decrement, pay, SyncCartWithLocalStorage} = cartSlice.actions
 export default cartSlice.reducer

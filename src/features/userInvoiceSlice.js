@@ -13,12 +13,12 @@ export const productsSlice = createSlice({
     forget: (state) => {
       state.userInvoice = []
       localStorage.removeItem('userForInvoice')
-    },
+    }
   }
 })
 
 export const {
   remember, 
-  forget, 
+  forget,
 } = productsSlice.actions
 export default productsSlice.reducer

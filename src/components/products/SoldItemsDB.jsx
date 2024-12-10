@@ -12,9 +12,7 @@ export default function SoldItemsDB(){
   function handleChange(){
     const inputDate = new Date(inputDateRef.current.value); // Data locale
     inputDate.setHours(0, 0, 0, 0); // Imposta l'ora a mezzanotte locale
-    
     setDateFrom(inputDate);
-
     setTotalIncomeFrom(
       soldItems.filter((product) =>
         (fromUnixTime(product.timestamp/1000)) >= inputDate
@@ -23,7 +21,7 @@ export default function SoldItemsDB(){
   }
 
   return(
-    <>
+    <div className={style.mainContainer}>
       <div className={style.headerContainer}>
         <h1>Sold items Database:</h1>
         <div>
@@ -35,6 +33,7 @@ export default function SoldItemsDB(){
           />
         </div>
       </div>
+      <p>Data rows: {soldItems.length}</p>
       <div className={style.tableContainer}>
         <table  className={style.SoldItemsDBTable}>
           <thead>
@@ -45,7 +44,6 @@ export default function SoldItemsDB(){
               <th>Product Price</th>
               <th>Quantity</th>
               <th>Total</th>
-              <th>Product Image</th>
               <th>Purchased the</th>
             </tr>
           </thead>
@@ -58,13 +56,12 @@ export default function SoldItemsDB(){
                 <td>{parseFloat(product.price).toFixed(2)} €</td>
                 <td>{product.quantity}</td>
                 <td>{(parseFloat(product.price) * parseFloat(product.quantity)).toFixed(2)} €</td>
-                <td><img src={product.image} alt="product"/></td>
                 <td>{format(fromUnixTime(product.timestamp/1000), 'dd/MM/yyyy p')}</td>
               </tr>
             ) : <tr>No products sold</tr>}
           </tbody>
         </table>
       </div>
-    </>
+    </div>
   )
 }

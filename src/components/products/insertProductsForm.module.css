@@ -36,3 +36,15 @@
   display: flex;
   justify-content: space-between;
 }
+
+.fileLabel {
+  border-radius: 3px;
+  padding: 3px;
+}
+
+.fileLabel input {
+  overflow: hidden;
+  width: 73px;
+  color: rgba(0, 0, 0, 0);
+  border: 1px solid gray;
+}

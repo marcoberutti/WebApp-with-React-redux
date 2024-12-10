@@ -14,13 +14,16 @@ export default function InsertProductsForm({
   productPrice,
   imageRef,
   handleChangeImage,
-  productImage
+  productImage,
+  handleChangeQuantity,
+  stockQuantityRef,
+  productStockQuantity
 }){
   return(
     <div className={style.formContainer}>
     <form className={style.AddProductForm}>
       <label>
-        product name
+        Product name
         <input 
         ref={nameRef}
         onChange={handleChangeName}
@@ -28,7 +31,7 @@ export default function InsertProductsForm({
         type="text"/>
       </label>
       <label>
-        product description
+        Product description
         <input 
         ref={descriptionRef}
         onChange={handleChangeDescription}
@@ -36,16 +39,24 @@ export default function InsertProductsForm({
         type="text"/>
       </label>
       <label>
-        product price
+        Product price
         <input 
         ref={priceRef}
         onChange={handleChangePrice}
         value={productPrice}
-        type="text"/>
+        type="number"/>
       </label>
       <label>
-        product image
+        Quantity in stock
         <input 
+        ref={stockQuantityRef}
+        onChange={handleChangeQuantity}
+        value={productStockQuantity}
+        type="number"/>
+      </label>
+      <label className={style.fileLabel}>
+        Product image
+        <input
         ref={imageRef}
         onChange={handleChangeImage}
         type="file"/>

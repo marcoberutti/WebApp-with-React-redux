@@ -18,12 +18,14 @@ export default function Products(){
   const [productDescription, setProductDescription] = useState('')
   const [productPrice, setProductPrice] = useState('')
   const [productImage, setProductImage] = useState()
+  const [productStockQuantity, setProductStockQuantity] = useState(0)
 
   const products = useSelector((state) => state.products); // Leggi lo stato
   const nameRef = useRef()
   const descriptionRef = useRef()
   const priceRef = useRef()
   const imageRef = useRef()
+  const stockQuantityRef= useRef();
 
   useEffect(()=>{
       localStorage.setItem('products2', JSON.stringify(products))
@@ -44,6 +46,7 @@ export default function Products(){
         description: productDescription,
         price: productPrice,
         image: productImage,
+        stockQuantity: productStockQuantity,
         quantity: 1
       };
       dispatch(addProduct(newProduct)); // Invio l'azione
@@ -51,19 +54,21 @@ export default function Products(){
       setProductDescription('')
       setProductPrice('')
       setProductImage(null)
+      setProductStockQuantity(0)
       nameRef.current.focus()
       imageRef.current.value = ""
       
     }
   }
 
-  function handleEditItem(id, name, description, price, image){
+  function handleEditItem(id, name, description, price, image, stockQuantity){
     dispatch(editProduct({
       id,
       name, 
       description,
       price,
-      image
+      image,
+      stockQuantity
     }))
   }
 
@@ -83,6 +88,10 @@ export default function Products(){
 
   function handleChangePrice(e){
     setProductPrice(e.target.value)
+  }
+
+  function handleChangeQuantity(e){
+    setProductStockQuantity(e.target.value)
   }
 
   function handleChangeImage(e){
@@ -141,6 +150,9 @@ export default function Products(){
           imageRef={imageRef}
           handleChangeImage={handleChangeImage}
           productImage={productImage}
+          stockQuantityRef={stockQuantityRef}
+          handleChangeQuantity={handleChangeQuantity}
+          productStockQuantity={productStockQuantity}
         />
         <ProductsTable 
           handleRemoveItem={handleRemoveItem}

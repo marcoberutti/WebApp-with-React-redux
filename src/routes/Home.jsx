@@ -43,7 +43,7 @@ export default function Home(){
   return(
     <>
     <div>
-      <Slider {...settings}>
+      {/* <Slider {...settings}>
         <div  className={style.header}>
           <div className={style.headerTitle}>
             <h1>Welcome to our shop</h1>
@@ -76,7 +76,7 @@ export default function Home(){
           </div>
         <img src={mainPic4} className={style.mainPic} alt=""/>
         </div>
-      </Slider>
+      </Slider> */}
     </div>
     <div className={style.cartLinkContainer}>
       <div>

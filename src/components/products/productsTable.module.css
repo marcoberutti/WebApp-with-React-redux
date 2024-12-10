@@ -13,6 +13,10 @@ th {
   border: 1px solid gray;
 }
 
+td {
+  max-width: 200px;
+}
+
 td,th {
   text-align: left;
   padding: 5px;
@@ -31,11 +35,20 @@ td,th {
 }
 
 .productsTable img {
-  width: 50px;
+  width: 100%;
+  height: 50px;
+  object-fit: cover;
 }
 
 .productsTable .tdActions {
   border: none;
   display: flex;
   gap: 2px;
+}
+
+.inputFile {
+  overflow: hidden;
+  width: 73px;
+  color: rgba(0, 0, 0, 0);
+  border: 1px solid gray;
 }

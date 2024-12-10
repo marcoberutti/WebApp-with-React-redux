@@ -54,7 +54,7 @@ export const usersSlice = createSlice({
     },
     resetMessage: (state) => {
       state.message = '';
-    }
+    },
   }
 })
 
